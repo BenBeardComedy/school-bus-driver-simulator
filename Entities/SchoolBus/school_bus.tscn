@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx357bjxnhbni"]
+
+[ext_resource type="Script" uid="uid://du443o7msefwu" path="res://Entities/SchoolBus/school_bus.gd" id="1_e4cmg"]
+[ext_resource type="Texture2D" uid="uid://beno6h6ontlum" path="res://Entities/SchoolBus/Art/SchoolBus.png" id="2_3tloi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j5jtn"]
+radius = 16.0
+height = 128.0
+
+[node name="SchoolBus" type="CharacterBody2D"]
+script = ExtResource("1_e4cmg")
+
+[node name="SchoolBus" type="Sprite2D" parent="."]
+position = Vector2(-15, 0)
+texture = ExtResource("2_3tloi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-15, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_j5jtn")
+
+[node name="DriveMarker2D" type="Marker2D" parent="."]
+position = Vector2(90, 0)
+
+[node name="ReverseMarker2D" type="Marker2D" parent="."]
+position = Vector2(-120, 0)

@@ -8,6 +8,10 @@ enum Gear {
 }
 
 
+@onready var drive_marker_2d: Marker2D = $DriveMarker2D
+@onready var reverse_marker_2d: Marker2D = $ReverseMarker2D
+
+
 var wheel_base:float = 70  # Distance from front to rear wheel
 var steering_angle:float = 20  # Amount that front wheel turns, in degrees
 
@@ -126,3 +130,9 @@ func calculate_steering(delta: float) -> void:
 	if d < 0:
 		velocity = -new_heading * velocity.length()
 	rotation = new_heading.angle()
+
+func get_target_marker() -> Vector2:
+	if current_gear == Gear.REVERSE:
+		return reverse_marker_2d.global_position
+	
+	return drive_marker_2d.global_position

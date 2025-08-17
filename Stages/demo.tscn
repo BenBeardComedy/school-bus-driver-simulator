@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://p1qpps3q5c88"]
+[gd_scene load_steps=4 format=3 uid="uid://p1qpps3q5c88"]
 
-[ext_resource type="PackedScene" uid="uid://cx357bjxnhbni" path="res://Entities/School Bus/school_bus.tscn" id="1_qsm04"]
+[ext_resource type="PackedScene" uid="uid://cx357bjxnhbni" path="res://Entities/SchoolBus/school_bus.tscn" id="1_qsm04"]
 [ext_resource type="Texture2D" uid="uid://b1qu3n3xuxtee" path="res://icon.svg" id="2_mw854"]
+[ext_resource type="PackedScene" uid="uid://ccq5fsmoqrcfe" path="res://Entities/FollowCam/follow_cam.tscn" id="3_mw854"]
 
 [node name="Demo" type="Node2D"]
 
@@ -12,3 +13,6 @@ texture = ExtResource("2_mw854")
 [node name="SchoolBus" parent="." instance=ExtResource("1_qsm04")]
 position = Vector2(533, 419)
 rotation = -1.5708
+
+[node name="FollowCam" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_mw854")]
+target = NodePath("../SchoolBus")

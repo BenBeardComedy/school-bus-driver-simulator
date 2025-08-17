@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccq5fsmoqrcfe"]
+
+[ext_resource type="Script" uid="uid://im7yrrtx22if" path="res://Entities/FollowCam/follow_cam.gd" id="1_p2lbd"]
+
+[node name="FollowCam" type="Camera2D"]
+ignore_rotation = false
+script = ExtResource("1_p2lbd")

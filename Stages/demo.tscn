@@ -5,9 +5,10 @@
 
 [node name="Demo" type="Node2D"]
 
-[node name="SchoolBus" parent="." instance=ExtResource("1_qsm04")]
-position = Vector2(533, 419)
-
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(311, 358)
 texture = ExtResource("2_mw854")
+
+[node name="SchoolBus" parent="." instance=ExtResource("1_qsm04")]
+position = Vector2(533, 419)
+rotation = -1.5708

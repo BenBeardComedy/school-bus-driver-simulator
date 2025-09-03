@@ -1,14 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://p1qpps3q5c88"]
+[gd_scene load_steps=6 format=3 uid="uid://p1qpps3q5c88"]
 
+[ext_resource type="Script" uid="uid://d2urd6gf3nwju" path="res://Stages/Demo/demo.gd" id="1_5t80h"]
 [ext_resource type="PackedScene" uid="uid://cx357bjxnhbni" path="res://Entities/SchoolBus/school_bus.tscn" id="1_qsm04"]
+[ext_resource type="PackedScene" uid="uid://0rkftaje26uk" path="res://Entities/Cone/cone.tscn" id="2_8em4f"]
 [ext_resource type="Texture2D" uid="uid://b1qu3n3xuxtee" path="res://icon.svg" id="2_mw854"]
 [ext_resource type="PackedScene" uid="uid://ccq5fsmoqrcfe" path="res://Entities/FollowCam/follow_cam.tscn" id="3_mw854"]
 
 [node name="Demo" type="Node2D"]
+script = ExtResource("1_5t80h")
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="World" type="Node2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="World"]
 position = Vector2(311, 358)
 texture = ExtResource("2_mw854")
+
+[node name="Cones" type="Node2D" parent="."]
+
+[node name="Cone1" parent="Cones" instance=ExtResource("2_8em4f")]
+position = Vector2(555, 207)
+mass = 10.0
+
+[node name="Cone2" parent="Cones" instance=ExtResource("2_8em4f")]
+position = Vector2(476, 207)
+mass = 10.0
 
 [node name="SchoolBus" parent="." instance=ExtResource("1_qsm04")]
 position = Vector2(533, 419)
@@ -16,3 +31,6 @@ rotation = -1.5708
 
 [node name="FollowCam" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_mw854")]
 target = NodePath("../SchoolBus")
+
+[connection signal="cone_hit" from="Cones/Cone1" to="." method="_on_cone_hit"]
+[connection signal="cone_hit" from="Cones/Cone2" to="." method="_on_cone_hit"]

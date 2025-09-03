@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://0rkftaje26uk"]
+
+[ext_resource type="Script" uid="uid://ct35ciu5xmygg" path="res://Entities/Cone/cone.gd" id="1_dj8p4"]
+[ext_resource type="Texture2D" uid="uid://becho4eil266b" path="res://Entities/Cone/Art/Cone.png" id="2_3x2vw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3x2vw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wr0k6"]
+radius = 8.0
+
+[node name="Cone" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_3x2vw")
+linear_damp = 1.0
+script = ExtResource("1_dj8p4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wr0k6")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_wr0k6")
+
+[node name="Cone" type="Sprite2D" parent="."]
+texture = ExtResource("2_3x2vw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
